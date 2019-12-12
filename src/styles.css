@@ -1,0 +1,28 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.user {
+  margin: 10px;
+}
+
+.text {
+  font: Calibri 20px;
+  font-weight: bold;
+}
+
+.float-vertical-align {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.alert {
+  margin-bottom: 0;
+}
