@@ -1,9 +1,11 @@
 import React from "react";
+import BeerSearch from "./Beer/BeerSearch";
 
 const Home = () => {
   return (
     <div className="Home">
-      Voici ma page d'accueil et son contenu à modifier encore
+      <img className="d-inline-block align-top" width="500" src="./img/wallpaper.png" alt=""/>
+      <BeerSearch/>
     </div>
   );
 }

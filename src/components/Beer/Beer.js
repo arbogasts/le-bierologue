@@ -1,22 +1,21 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const Beer = props => {
   // on récupère la fonction dispatch qui permettra de dispatcher des actions
-  const dispatch = useDispatch();
 
   return (
-    <div className="Beer">
-      <div className="alert alert-primary" role="alert">
-        <span className="text">{props.beername}</span>
-        <button
-          type="button"
-          className="btn btn-danger float-vertical-align"
-        >
-          Supprimer
-        </button>
-      </div>
-    </div>
+    <Link to={`/beer/${props.id}`} className="card-link">
+      <Card style={{ width: '18rem' }} className="card-beer">
+        <Card.Img className="img-beer" variant="top" src={props.icon.medium || props.icon} />
+        <Card.Body>
+          <Card.Title>{props.nameDisplay}</Card.Title>
+        </Card.Body>
+        <Button variant="dark">En savoir plus</Button>
+      </Card>
+    </Link>
   );
 };
 

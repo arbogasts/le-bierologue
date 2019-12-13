@@ -26,3 +26,31 @@
 .alert {
   margin-bottom: 0;
 }
+
+/* PAGE GLOBAL */
+
+* {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background-color: #eeeeee;
+}
+
+/* PAGE DE VUE DES BIERES */
+
+.img-beer {
+  object-fit: scale-down;
+}
+
+.card-link {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.card-beer {
+  border-radius: 0.75rem;
+  border: 1px solid #343a40;
+}

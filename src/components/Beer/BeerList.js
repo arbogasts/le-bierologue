@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 
 import Beer from "./Beer";
@@ -7,19 +6,14 @@ import Beer from "./Beer";
 const BeerList = props => {
   // useSelector permet d'accéder à une valeur enregistrée dans le store redux
   // const [beerList, setBeerList] = useSelector(reduxState => reduxState.beerReducer.list);
-  const [beerList, setBeerList] = useState([])
+  const [beerList, setBeerList] = useState([]);
+  const key = process.env.REACT_APP_BREWERY_SECRET;
 
   useEffect(() => {
-    // TODO, appel à l'API https://restcountries.eu/rest/v2/name/[COUNTRY_NAME]
-    // extraction et sauvergarde des données à afficher (voir render())
-    axios.get("https://sandbox-api.brewerydb.com/v2/beers?key=e0ac569251cd1b13706b3cfc291ae174",{
-      headers: {
-          'Access-Control-Allow-Origin': '*',
-        }
-      })
+    axios.get("/beers?key=" + key)
     .then(response => {
-        console.log(response);
-        setBeerList(response.data);
+        console.log(response.data);
+        setBeerList(response.data.data);
       })
     .catch(function (error) {
       if (error.response) {
@@ -32,16 +26,18 @@ const BeerList = props => {
         console.log(error.message);
       }
     console.log(error.config);
-  });
+    });
   }, []);
 
   return (
     <div>
-      <span className="text">Nombre de bières trouvés : {beerList.length}</span>
-      {beerList.map(beer => {
-        console.log(beer);
-        return <p>test</p>;
-      })}
+      <span className="text">Nombre de bières trouvés : {beerList.length || "Chargement en cours..."}</span>
+      <div className="row">
+        {beerList.map(beer => {
+          console.log(beer);
+          return <Beer key={beer.id} id={beer.id} icon={beer.labels || "./img/default.png"} nameDisplay={beer.nameDisplay}/>;
+        })}
+      </div>
     </div>
   );
 };
