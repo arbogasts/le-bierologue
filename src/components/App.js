@@ -1,13 +1,11 @@
 import React from "react";
 
-import UserForm from './UserForm';
-import UserList from './UserList';
+import Header from "./Header";
 
 const App = () => {
   return (
     <div className="App">
-      <UserForm />
-      <UserList />
+      <Header/>
     </div>
   );
 }
