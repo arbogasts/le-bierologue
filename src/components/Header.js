@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from "react-bootstrap/Nav"
 import Home from "./Home";
 import Users from "./Users";
+import Beers from "./Beers";
 
 
 const Header = () => {
@@ -19,6 +20,7 @@ const Header = () => {
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/">Accueil</Nav.Link>
                         <Nav.Link as={Link} to="/users">Users</Nav.Link>
+                        <Nav.Link as={Link} to="/beers">Bières</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -27,6 +29,7 @@ const Header = () => {
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/users' component={Users} />
+                <Route exact path='/beers' component={Beers} />
                 <Route render={function () {
                 return <div className="text-center">
                         <img width="700" alt="" src="./img/404.png"/>

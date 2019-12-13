@@ -1,5 +1,7 @@
 import UserReducer from "./UserReducer";
+import BeerReducer from "./BeerReducer";
 
 export default {
-  userReducer: UserReducer
+  userReducer: UserReducer,
+  beerReducer: BeerReducer
 };
