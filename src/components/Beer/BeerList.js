@@ -34,7 +34,6 @@ const BeerList = props => {
       <span className="text">Nombre de bières trouvés : {beerList.length || "Chargement en cours..."}</span>
       <div className="row">
         {beerList.map(beer => {
-          console.log(beer);
           return <Beer key={beer.id} id={beer.id} icon={beer.labels || "./img/default.png"} nameDisplay={beer.nameDisplay}/>;
         })}
       </div>
