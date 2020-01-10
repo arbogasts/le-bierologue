@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "../Loading";
 
 import Beer from "./Beer";
 
@@ -32,7 +33,7 @@ const BeerList = props => {
 
   return (
     <div>
-      <span className="text">Nombre de bières trouvés : {beerList.length || "Chargement en cours..."}</span>
+      <span className="text">Nombre de bières trouvés : {beerList.length || <Loading/>}</span>
       <div className="row">
         {beerList.map(beer => {
           return <Beer key={beer.id} id={beer.id} icon={beer.labels || "./img/default.png"} nameDisplay={beer.nameDisplay}/>;
