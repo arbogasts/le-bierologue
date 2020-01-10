@@ -53,6 +53,9 @@ const BeerSearch = props => {
       <div className="row">
         <Container>
           <Col>
+            <h1>Rechercher une bière</h1>
+          </Col>
+          <Col>
           <form id="search-beer" onSubmit={handleSubmit}>
             <label>
               <input
