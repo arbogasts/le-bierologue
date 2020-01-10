@@ -6,6 +6,7 @@ import Beer from "./Beer";
 const BeerList = props => {
   // useSelector permet d'accéder à une valeur enregistrée dans le store redux
   // const [beerList, setBeerList] = useSelector(reduxState => reduxState.beerReducer.list);
+  const loading = useState(false);
   const [beerList, setBeerList] = useState([]);
   const key = process.env.REACT_APP_BREWERY_SECRET;
 
