@@ -12,7 +12,7 @@ const Loading = props => {
             alignItems: "center"
         }}
     >
-        <Loader type="TailSpin" color="#e5b53a" height="100" width="100" />
+        <Loader type="TailSpin" color="#e5b53a"/>
   </div>);
 };
 
