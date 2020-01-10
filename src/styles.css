@@ -54,3 +54,14 @@ body {
   border-radius: 0.75rem;
   border: 1px solid #343a40;
 }
+
+.card-link:hover div.text-warning{
+  text-decoration: underline;
+  text-decoration-color: #ffc107;
+}
+
+.card-link:hover button.btn.btn-dark {
+  color: #fff;
+  background-color: #23272b;
+  border-color: #1d2124;
+}

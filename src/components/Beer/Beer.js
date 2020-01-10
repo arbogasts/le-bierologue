@@ -11,7 +11,7 @@ const Beer = props => {
       <Card style={{ width: '18rem' }} className="card-beer">
         <Card.Img className="img-beer" variant="top" src={props.icon.medium || props.icon} />
         <Card.Body>
-          <Card.Title>{props.nameDisplay}</Card.Title>
+          <Card.Title className="text-warning">{props.nameDisplay}</Card.Title>
         </Card.Body>
         <Button variant="dark">En savoir plus</Button>
       </Card>

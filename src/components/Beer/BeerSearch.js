@@ -29,7 +29,6 @@ const BeerSearch = props => {
 					{ cancelToken:source.token });
 				if (res.data){
 					setBeerSearch(res.data.data);
-					console.log(beerSearch);
 				}
 				else
           console.log('/404');
@@ -57,10 +56,13 @@ const BeerSearch = props => {
           </Col>
           <Col>
           <form id="search-beer" onSubmit={handleSubmit}>
-            <label>
+            <label htmlFor="beer_name">
               <input
                 type="text"
                 className="form-control"
+                placeholder="Nom de bière (Bud, Guinness...)"
+                id="beer_name"
+                name="beer_name"
                 value={beerInput}
                 onChange={event => setBeerInput(event.target.value)} />
             </label>
