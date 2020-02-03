@@ -105,6 +105,17 @@ const BeerRandom = props => {
 								{beer.foodPairings || "Aucunes informations disponibles"}
 							</p>
 						</Tab>
+						<Tab eventKey="style" title="Style de la bière ?">
+							<p>
+								{beer.style ? (
+									<div>
+										<p><strong>Nom :</strong> {beer.style.name}</p>
+										<p><strong>Surnom :</strong> {beer.style.shortName}</p>
+										<p><strong>Description :</strong> {beer.style.description}</p>
+									</div>
+								) : "Aucunes informations disponibles"}
+							</p>
+						</Tab>
 					</Tabs>
 				</Card.Body>
 			</Card>

@@ -110,6 +110,17 @@ const BeerInfo = props => {
 								{beer.foodPairings || "Aucunes informations disponibles"}
 							</p>
 						</Tab>
+						<Tab eventKey="style" title="Style de la bière ?">
+							<p>
+								{beer.style ? (
+									<div>
+										<p>Nom : {beer.style.name}</p>
+										<p>Surnom : {beer.style.shortName}</p>
+										<p>Description : {beer.style.description}</p>
+									</div>
+								) : "Aucunes informations disponibles"}
+							</p>
+						</Tab>
 					</Tabs>
 				</Card.Body>
 			</Card>
