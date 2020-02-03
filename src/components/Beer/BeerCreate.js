@@ -18,34 +18,48 @@ const BeerCreate = props => {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    // Pas de validation auto, gestion manuelle
-    setValidated(false);
-
-    // Requête POST
-    try {
-        const CancelToken = axios.CancelToken;
-		const source = CancelToken.source();
-        let res = await axios.post(`/beer?key=${key}`,
-            querystring.stringify({
-                cancelToken:source.token
-            }), 
-            {
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
-                },
-            });
-        if (res.data){
-            console.log(res.data);
+    else{
+        // Get data from form elements in the body
+        const requestBody = {
+            name:       form.elements.name.value,
+            styleId:    form.elements.styleId.value,
+            description:form.elements.description.value,
+            abv:        form.elements.abv.value,
+            ibu:        form.elements.ibu.value,
         }
-        else
-              console.log('/404');
-    } 
-    catch (err) {
-        if (axios.isCancel(err))
-            source.cancel();
-        console.log('/404');
+        
+        // Send the data
+        sendBeer();
+    
+        // Requête POST
+        async function sendBeer(){
+            try {
+                let res = await axios.post(`/beer?key=${key}`,
+                    querystring.stringify(requestBody), 
+                    {
+                        headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                    });
+                if (res.status === 201){
+                    console.log(res);
+                    console.log('créer !!');
+                }
+                else{
+                    console.log(res);
+                }
+            } 
+            catch (err) {
+                console.log('Erreur', err);
+            }
+        }
+    
+        // Pas de validation auto, gestion manuelle
+        // Stop propagation of asynchronous event
+        event.preventDefault();
+        event.stopPropagation();
     }
+    setValidated(true);
   };
 
   useEffect(() => {
@@ -92,6 +106,7 @@ const BeerCreate = props => {
                                 <Form.Label>Style *</Form.Label>
                                 {style ? (
                                     <Form.Control required as="select">
+                                        <option value="">Veuillez séléctionnez un style</option>
                                         {style.map(item => {
                                             return <option id={item.id} value={item.id}>{item.shortName || item.name}</option>
                                         })}
