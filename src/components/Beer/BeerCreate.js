@@ -64,7 +64,8 @@ const BeerCreate = props => {
 
   useEffect(() => {
 		const CancelToken = axios.CancelToken;
-		const source = CancelToken.source();
+        const source = CancelToken.source();
+        // Méthode permettant d'obtenir tous les styles séléctionnables des bières
 		async function fetchStyle() {
 			try {
 				let res = await axios.get(`/styles?key=${key}`,
@@ -108,7 +109,7 @@ const BeerCreate = props => {
                                     <Form.Control required as="select">
                                         <option value="">Veuillez séléctionnez un style</option>
                                         {style.map(item => {
-                                            return <option id={item.id} value={item.id}>{item.shortName || item.name}</option>
+                                            return <option key={item.id} value={item.id}>{item.shortName || item.name}</option>
                                         })}
                                     </Form.Control>
                                     ) : <Loading/>
