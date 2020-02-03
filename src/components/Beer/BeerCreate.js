@@ -5,11 +5,15 @@ import Card from "react-bootstrap/Card";
 import Container from 'react-bootstrap/Container'
 import { Form, Button, Col } from "react-bootstrap";
 import Loading from "../Loading";
+import Success from "../Utilities/Success";
+import Error from "../Utilities/Error";
 
 const BeerCreate = props => {
   // on récupère la fonction dispatch qui permettra de dispatcher des actions
   const [style, setStyle] = useState([]);
   const [validated, setValidated] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState(false);
   const key = process.env.REACT_APP_BREWERY_SECRET;
 
   const handleSubmit = event => {
@@ -27,32 +31,30 @@ const BeerCreate = props => {
             abv:        form.elements.abv.value,
             ibu:        form.elements.ibu.value,
         }
-        
-        // Send the data
-        sendBeer();
     
         // Requête POST
-        async function sendBeer(){
-            try {
-                let res = await axios.post(`/beer?key=${key}`,
-                    querystring.stringify(requestBody), 
-                    {
-                        headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                    });
-                if (res.status === 201){
-                    console.log(res);
-                    console.log('créer !!');
-                }
-                else{
-                    console.log(res);
-                }
-            } 
-            catch (err) {
-                console.log('Erreur', err);
+        axios.post(`/beer?key=${key}`,
+            querystring.stringify(requestBody), 
+            {
+                headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+        .then(function (response) {
+            // handle success
+            // console.log(response);
+            if(response.status === 201){
+                setSuccess(requestBody.name);
             }
-        }
+            else {
+                setError(true)
+            }
+        })
+        .catch(function (error) {
+            // handle error
+            // console.error(error);
+            setError(true);
+        });
     
         // Pas de validation auto, gestion manuelle
         // Stop propagation of asynchronous event
@@ -140,6 +142,8 @@ const BeerCreate = props => {
                                 Créer la bière
                             </Button>
                         </Form>
+                        {(success) ? <Success key={success} name={success} /> : ""}
+                        {(error) ? <Error key={error} name={error} /> : ""}
 					</Container>
 				</Card.Body>
 			</Card>

@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container'
 import { Col } from "react-bootstrap";
 import axios from "axios";
 import Beer from "./Beer";
-import Loading from "../Loading";
 
 const BeerSearch = props => {
   const [beerInput, setBeerInput] = useState("");
