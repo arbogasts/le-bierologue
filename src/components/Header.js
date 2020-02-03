@@ -2,12 +2,10 @@ import React from "react";
 import { Switch, Route, Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
 import Home from "./Home";
 import Beers from "./Beers";
 import BeerInfo from "./Beer/BeerInfo";
+import BeerRandom from "./Beer/BeerRandom";
 
 
 const Header = () => {
@@ -24,6 +22,7 @@ const Header = () => {
                         <Nav.Link as={Link} to="/">Accueil</Nav.Link>
                         <Nav.Link as={Link} to="/beers">Bières</Nav.Link>
                         <Nav.Link as={Link} to="/favorites">Mes bières favorites</Nav.Link>
+                        <Nav.Link as={Link} to="/random">Bière aléatoire</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -33,6 +32,7 @@ const Header = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/beers' component={Beers} />
                 <Route exact path="/beer/:id" component={BeerInfo} />
+                <Route exact path='/random' component={BeerRandom} />
                 <Route render={function () {
                 return <div className="text-center">
                         <img width="700" alt="" src="./img/404.png"/>

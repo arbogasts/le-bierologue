@@ -6,24 +6,20 @@ import Container from 'react-bootstrap/Container'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Row, Col, Badge, OverlayTrigger, Tooltip, Tabs, Tab } from "react-bootstrap";
 
-const BeerInfo = props => {
+const BeerRandom = props => {
   // on récupère la fonction dispatch qui permettra de dispatcher des actions
-  const [idBeerUrl, setIdBeerUrl] = useState("");
   const [beer, setBeer] = useState([]);
   const key = process.env.REACT_APP_BREWERY_SECRET;
-
-  useEffect(() => {
-    setIdBeerUrl(props.match.params.id);
-  }, [props.match.params.id]);
 
   useEffect(() => {
 		const CancelToken = axios.CancelToken;
 		const source = CancelToken.source();
 		async function fetchBeer() {
 			try {
-				let res = await axios.get(`/beer/${idBeerUrl}?key=${key}`,
+				let res = await axios.get(`/beer/random?key=${key}`,
 					{ cancelToken:source.token });
 				if (res.data){
+                    console.log(res.data.data)
 					setBeer(res.data.data);
 				}
 				else
@@ -36,13 +32,12 @@ const BeerInfo = props => {
 			}
 		}
 
-		if (idBeerUrl)
-			fetchBeer();
+        fetchBeer();
 
 		return () => {
 			source.cancel();
 		}
-	}, [idBeerUrl])
+	}, [])
 
   return (
 	<div className="beer-details">
@@ -119,4 +114,4 @@ const BeerInfo = props => {
   );
 };
 
-export default BeerInfo;
+export default BeerRandom;
