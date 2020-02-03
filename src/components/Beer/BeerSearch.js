@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import { Col } from "react-bootstrap";
 import axios from "axios";
 import Beer from "./Beer";
+import Loading from "../Loading";
 
 const BeerSearch = props => {
   const [beerInput, setBeerInput] = useState("");
@@ -10,13 +11,13 @@ const BeerSearch = props => {
   const key = process.env.REACT_APP_BREWERY_SECRET;
 
   const reset = () => {
-    setBeerInput("");
+    // setBeerInput("");
     setBeerSearch([]);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // reset();
+    reset();
     searchBeers();
   }
 
