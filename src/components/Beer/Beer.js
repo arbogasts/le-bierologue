@@ -49,7 +49,7 @@ const Beer = props => {
   return (
     <Link to={`/beer/${idBeer}`} className="card-link">
       <Card style={{ width: '18rem' }} className="card-beer">
-        <Button onClick={handleDelete} id="btn-delete" variant="danger">Delete</Button>
+        <Button onClick={handleDelete} id="btn-delete" variant="danger">Supprimer</Button>
         <Card.Img className="img-beer" variant="top" src={props.icon.medium || props.icon} />
         <Card.Body>
           <Card.Title className="text-warning">{props.nameDisplay}</Card.Title>

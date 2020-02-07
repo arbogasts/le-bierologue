@@ -73,3 +73,8 @@ body {
 :disabled {
   cursor: not-allowed;
 }
+
+.row-beers {
+  margin-left: 15px!important;
+  margin-right: 15px!important;
+}

@@ -42,7 +42,7 @@ const BeerCreate = props => {
             })
         .then(function (response) {
             // handle success
-            // console.log(response);
+            console.log(response);
             if(response.status === 201){
                 setSuccess(requestBody.name);
             }
@@ -52,7 +52,7 @@ const BeerCreate = props => {
         })
         .catch(function (error) {
             // handle error
-            // console.error(error);
+            console.error(error);
             setError(true);
         });
     

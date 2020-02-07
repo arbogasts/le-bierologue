@@ -34,7 +34,7 @@ const BeerList = props => {
   return (
     <div>
       <span className="text">Nombre de bières trouvés : {beerList.length || <Loading/>}</span>
-      <div className="row">
+      <div className="row row-beers">
         {beerList.map(beer => {
           return <Beer key={beer.id} id={beer.id} icon={beer.labels || "./img/default.png"} nameDisplay={beer.nameDisplay}/>;
         })}

@@ -86,6 +86,8 @@ const BeerSearch = props => {
             <Button variant="dark" key="Réinitialiser" onClick={reset}>Réinitialiser</Button>
           </form>
           </Col>
+        </Container>
+        <Container>
           <Col>
             <div id="beer-list" className="row">
               {beerSearch ? 
