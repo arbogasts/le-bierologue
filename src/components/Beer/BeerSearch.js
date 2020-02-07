@@ -18,7 +18,9 @@ const BeerSearch = props => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setBeerSearch([]);
-    searchBeers();
+    if(beerInput.length >= 2){
+      searchBeers();
+    }
   }
 
   const searchBeers = (event) => {
@@ -73,6 +75,7 @@ const BeerSearch = props => {
                 type="text"
                 className="form-control"
                 placeholder="Nom de bière (Bud, Guinness...)"
+                title="2 caractères minimum"
                 id="beer_name"
                 name="beer_name"
                 value={beerInput}
