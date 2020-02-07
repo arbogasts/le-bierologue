@@ -26,13 +26,11 @@ const BeerInfo = props => {
 				if (res.data){
 					setBeer(res.data.data);
 				}
-				else
-          			console.log('/404');
 			} 
 			catch (err) {
 				if (axios.isCancel(err))
 					source.cancel();
-				console.log('/404');
+				window.location.href = "/404-not-found";
 			}
 		}
 
