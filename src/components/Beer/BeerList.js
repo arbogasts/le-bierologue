@@ -50,11 +50,11 @@ const BeerList = props => {
         {beerList.map(beer => {
           return <Beer key={beer.id} id={beer.id} icon={beer.labels || "./img/default.png"} nameDisplay={beer.nameDisplay}/>;
         })}
-        <div className="text-center">
-          <Button variant="warning" key="load-more" id="load-more" onClick={handleMore}>
-            Charger plus
-          </Button>
-        </div>
+      </div>
+      <div className="text-center">
+        <Button variant="warning" key="load-more" id="load-more" onClick={handleMore}>
+          Charger plus
+        </Button>
       </div>
     </div>
   );
