@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from 'react-bootstrap/Container'
-import { Col } from "react-bootstrap";
+import { Col, Button } from "react-bootstrap";
 import axios from "axios";
 import Beer from "./Beer";
 
@@ -10,13 +10,14 @@ const BeerSearch = props => {
   const key = process.env.REACT_APP_BREWERY_SECRET;
 
   const reset = () => {
-    // setBeerInput("");
+    setBeerInput("");
     setBeerSearch([]);
+    window.localStorage.clear();
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    reset();
+    setBeerSearch([]);
     searchBeers();
   }
 
@@ -29,6 +30,8 @@ const BeerSearch = props => {
 					{ cancelToken:source.token });
 				if (res.data){
 					setBeerSearch(res.data.data);
+          window.localStorage.setItem('beerInput',beerInput);
+          window.localStorage.setItem('beerSearch',JSON.stringify(res.data.data));
 				}
 				else
           console.log('/404');
@@ -46,6 +49,15 @@ const BeerSearch = props => {
 			source.cancel();
 		}
   }
+
+  useEffect(() => {
+    let beerInput = window.localStorage.getItem('beerInput');
+    let beerSearch = window.localStorage.getItem('beerSearch');
+    if(beerInput && beerSearch && beerSearch !== undefined){
+      setBeerInput(beerInput)
+      setBeerSearch(JSON.parse(beerSearch));
+    }
+  }, [])
 
   return (
     <div className="container">
@@ -71,6 +83,7 @@ const BeerSearch = props => {
               className="btn btn-warning"
               value="Rechercher"
               />
+            <Button variant="dark" key="Réinitialiser" onClick={reset}>Réinitialiser</Button>
           </form>
           </Col>
           <Col>

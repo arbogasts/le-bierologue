@@ -50,7 +50,7 @@ const BeerRandom = props => {
 								{
 									beer.labels ? 
 									<img alt="" src={beer.labels.medium} className="d-inline-block align-top"/>
-									: <img alt="Icône par défaut des bières" src="../img/default.png" className="d-inline-block align-top"/>
+									: <img alt=" défaut des bières" src="../img/default.png" className="d-inline-block align-top"/>
 								}
 							</Col>
 							<Col sm={8} xs={12} className="mt-4">
@@ -95,7 +95,7 @@ const BeerRandom = props => {
 								(<p>
 									<br/>
 									Nos professionnels vous conseille d'associer votre bière avec un verre "{beer.glass.name}" pour une association parfaite.
-									<img alt="Image du verre de bière associé" src={`/img/glasses/${beer.glass.name}.png`}/>
+									<img alt="verre de bière associé" src={`/img/glasses/${beer.glass.name}.png`}/>
 								</p>)
 								: (<p>Aucunes informations disponibles</p>)
 							}
@@ -108,11 +108,11 @@ const BeerRandom = props => {
 						<Tab eventKey="style" title="Style de la bière ?">
 							<p>
 								{beer.style ? (
-									<div>
-										<p><strong>Nom :</strong> {beer.style.name}</p>
-										<p><strong>Surnom :</strong> {beer.style.shortName}</p>
-										<p><strong>Description :</strong> {beer.style.description}</p>
-									</div>
+										<span>
+											<strong>Nom :</strong> {beer.style.name}<br/>
+											<strong>Surnom :</strong> {beer.style.shortName}<br/>
+											<strong>Description :</strong> {beer.style.description}
+										</span>
 								) : "Aucunes informations disponibles"}
 							</p>
 						</Tab>
