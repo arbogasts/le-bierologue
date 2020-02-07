@@ -12,6 +12,7 @@ const Beer = props => {
   const handleDelete = event => {
     event.preventDefault();
     // Event de confirmation
+    let btn = event.target;
 
     // Traitement de la suppression
     axios.delete(`/beer/${idBeer}?key=${key}`,
@@ -23,8 +24,11 @@ const Beer = props => {
     .then(function (response) {
         // handle success
         console.log(response);
-        if(response.status === 201){
-          console.log('success');
+        if(response.statusText === 'OK'){
+          btn.classList.remove('btn-danger');
+          btn.classList.add('btn-success');
+          btn.innerText = "Suppression réussie.";
+          btn.setAttribute("disabled", true);
         }
         else {
             // setError(true)
@@ -45,7 +49,7 @@ const Beer = props => {
   return (
     <Link to={`/beer/${idBeer}`} className="card-link">
       <Card style={{ width: '18rem' }} className="card-beer">
-        <Button onClick={handleDelete} variant="danger">Delete</Button>
+        <Button onClick={handleDelete} id="btn-delete" variant="danger">Delete</Button>
         <Card.Img className="img-beer" variant="top" src={props.icon.medium || props.icon} />
         <Card.Body>
           <Card.Title className="text-warning">{props.nameDisplay}</Card.Title>
